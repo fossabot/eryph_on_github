@@ -1,0 +1,12 @@
+name: Inline
+on: [workflow_dispatch]
+
+jobs:
+    build:
+      name: Run Script
+      runs-on: windows-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: Script
+          run: Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/eryph-org/eryph/main/src/apps/src/Eryph-zero/install.ps1'))
+          shell: pwsh
