@@ -10,3 +10,8 @@ jobs:
         - name: Script
           run: Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/eryph-org/eryph/main/src/apps/src/Eryph-zero/install.ps1'))
           shell: pwsh
+          - name: Script
+          run: |
+            new-catlet -parent dbosoft/winsrv2019-standard/starter | Start-Catlet -Force
+            get-catletip
+          shell: pwsh
